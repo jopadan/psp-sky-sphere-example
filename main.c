@@ -168,11 +168,9 @@ int main(void)
 	OSL_FONT *font = oslLoadFontFile("flash0:/font/ltn0.pgf");
 	oslSetFont(font);
 
-	OSL_SOUND *mod = oslLoadSoundFileMOD("music/GSLINGER.MOD", OSL_FMT_NONE);
 	skysphere_t *sky = skysphere_create(16, 16);
 
 	gu_start();
-	oslPlaySound(mod,1);
 	OSL_CONTROLLER *k;
 	oslSetFrameskip(1);
 	oslSetMaxFrameskip(4);
@@ -212,7 +210,6 @@ int main(void)
 	}
 
 	skysphere_destroy(sky);
-	oslDeleteSound(mod);
 	oslDeleteFont(font);
 	oslIntraFontShutdown();
 	oslDeinitAudio();
