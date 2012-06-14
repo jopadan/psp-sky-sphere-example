@@ -10,3 +10,13 @@
 *.lai
 *.la
 *.a
+
+# Compiler created assembly
+*.s
+*.i
+
+*.pbp
+*.PBP
+PARAM.SFO
+*.prx
+*.elf
