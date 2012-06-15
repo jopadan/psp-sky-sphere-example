@@ -17,7 +17,7 @@ char fps_str[100];
 float elapsed_sec;
 
 SceKernelUtilsMt19937Context ctx;
-ScePspFVector3 eye = { 0.0f, 0.0f, 5.0f };
+ScePspFVector3 eye = { 0.0f, 0.0f, 0.0f };
 ScePspFVector3 neg_eye = { 0.0f, 0.0f, -5.0f };
 
 ScePspFVector3 origin = { 0.0f, 0.0f, 0.0f };

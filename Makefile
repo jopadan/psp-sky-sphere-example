@@ -5,7 +5,7 @@ OBJS = skysphere.o main.o
 BUILD_PRX = 1
 PSP_FW_VERSION=371
 
-CFLAGS = -O2 -g -G0 -Wall -fverbose-asm -save-temps
+CFLAGS = -Os -g -G0 -Wall -fverbose-asm -save-temps
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS = $(CFLAGS)
 LIBDIR =

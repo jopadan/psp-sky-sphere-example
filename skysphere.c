@@ -17,10 +17,10 @@ skysphere_t* skysphere_create(int rows, int cols)
 
 	s->images[0] = oslLoadImageFileJPG("images/pos_x.jpg", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
 	s->images[1] = oslLoadImageFileJPG("images/neg_x.jpg", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
-	s->images[2] = oslLoadImageFileJPG("images/neg_z.jpg", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
-	s->images[3] = oslLoadImageFileJPG("images/pos_z.jpg", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
-	s->images[4] = oslLoadImageFileJPG("images/neg_y.jpg", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
-	s->images[5] = oslLoadImageFileJPG("images/pos_y.jpg", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	s->images[2] = oslLoadImageFileJPG("images/pos_y.jpg", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	s->images[3] = oslLoadImageFileJPG("images/neg_y.jpg", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	s->images[4] = oslLoadImageFileJPG("images/pos_z.jpg", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	s->images[5] = oslLoadImageFileJPG("images/neg_z.jpg", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
 
 	// pos_x
 	i = 0;
@@ -46,7 +46,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// bottom left
@@ -58,7 +58,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// top right
@@ -71,7 +71,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// second triangle
@@ -84,7 +84,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// top right
@@ -95,7 +95,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->z = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// bottom left
@@ -107,7 +107,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 		}
 	}
@@ -136,7 +136,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// bottom left
@@ -148,7 +148,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// top right
@@ -161,7 +161,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// second triangle
@@ -174,7 +174,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// top right
@@ -185,7 +185,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->z = vfpu_tanf(dalpha - (GU_PI/2.0f)/(float)cols);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// bottom left
@@ -197,17 +197,108 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 		}
 	}
 
-	// neg_z
+	// pos_y
 	i = 2;
 	for(r=0; r < rows; r++)
 	{
 		float dr = (((float)r)/((float)rows));
-		float dbeta = GU_PI/4.0f - (GU_PI/2.0f) * dr;
+		float dbeta = -GU_PI/4.0f + (GU_PI/2.0f) * dr;
+		float tan_dbeta = vfpu_tanf(dbeta);
+
+		for(c=0;c < cols; c++)
+		{
+			float dc = (((float)c)/((float)cols));
+			float dalpha = GU_PI/4.0f - (GU_PI/2.0f) * dc;
+			float tan_dalpha = vfpu_tanf(dalpha);
+			sphere_vertex_t* v;
+
+			// top left
+			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 0]);
+			v->color = RGB(255,0,255);
+			v->x = tan_dalpha;
+			v->y = 1.0f;
+			v->z = tan_dbeta;
+			vfpu_normalize_t((ScePspFVector3*)&(v->x));
+
+			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+
+			// bottom left
+			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 1]);
+			v->color = RGB(255,0,255);
+			v->x = tan_dalpha;
+			v->y = 1.0f;
+			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
+			vfpu_normalize_t((ScePspFVector3*)&(v->x));
+
+			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+
+			// top right
+			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 2]);
+			v->color = RGB(255,0,255);
+			v->x = vfpu_tanf(dalpha - (GU_PI/2.0f)/(float)cols);
+			v->y = 1.0f;
+			v->z = tan_dbeta;
+			vfpu_normalize_t((ScePspFVector3*)&(v->x));
+
+
+			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+
+			// second triangle
+			// bottom right
+			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 3]);
+			v->color = RGB(255,0,255);
+			v->x = vfpu_tanf(dalpha - (GU_PI/2.0f)/(float)cols);
+			v->y = 1.0f;
+			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
+
+			vfpu_normalize_t((ScePspFVector3*)&(v->x));
+
+			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+
+			// top right
+			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 4]);
+			v->color = RGB(255,0,255);
+			v->x = vfpu_tanf(dalpha - (GU_PI/2.0f)/(float)cols);
+			v->y = 1.0f;
+			v->z = tan_dbeta;
+			vfpu_normalize_t((ScePspFVector3*)&(v->x));
+			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+
+			// bottom left
+			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 5]);
+			v->color = RGB(255,0,255);
+			v->x = tan_dalpha;
+			v->y = 1.0f;
+			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
+			vfpu_normalize_t((ScePspFVector3*)&(v->x));
+
+			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+		}
+	}
+
+	// neg_y
+	i = 3;
+	for(r=0; r < rows; r++)
+	{
+		float dr = (((float)r)/((float)rows));
+		float dbeta = -GU_PI/4.0f + (GU_PI/2.0f) * dr;
 		float tan_dbeta = vfpu_tanf(dbeta);
 
 		for(c=0;c < cols; c++)
@@ -219,82 +310,82 @@ skysphere_t* skysphere_create(int rows, int cols)
 
 			// top left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 0]);
-			v->color = RGB(0,0,255);
+			v->color = RGB(255,255,0);
 			v->x = tan_dalpha;
-			v->y = tan_dbeta;
-			v->z = -1.0f;
+			v->y = -1.0f;
+			v->z = tan_dbeta;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 1]);
-			v->color = RGB(0,0,255);
+			v->color = RGB(255,255,0);
 			v->x = tan_dalpha;
-			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
-			v->z = -1.0f;
+			v->y = -1.0f;
+			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 2]);
-			v->color = RGB(0,0,255);
+			v->color = RGB(255,255,0);
 			v->x = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
-			v->y = tan_dbeta;
-			v->z = -1.0f;
+			v->y = -1.0f;
+			v->z = tan_dbeta;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// second triangle
 			// bottom right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 3]);
-			v->color = RGB(0,0,255);
+			v->color = RGB(255,255,0);
 			v->x = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
-			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
-			v->z = -1.0f;
+			v->y = -1.0f;
+			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
 
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 4]);
-			v->color = RGB(0,0,255);
+			v->color = RGB(255,255,0);
 			v->x = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
-			v->y = tan_dbeta;
-			v->z = -1.0f;
+			v->y = -1.0f;
+			v->z = tan_dbeta;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 5]);
-			v->color = RGB(0,0,255);
+			v->color = RGB(255,255,0);
 			v->x = tan_dalpha;
-			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
-			v->z = -1.0f;
+			v->y = -1.0f;
+			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 		}
 	}
 
 	// pos_z
-	i = 3;
+	i = 4;
 	for(r=0; r < rows; r++)
 	{
 		float dr = (((float)r)/((float)rows));
@@ -317,7 +408,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// bottom left
@@ -329,7 +420,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// top right
@@ -342,7 +433,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// second triangle
@@ -356,7 +447,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// top right
@@ -367,7 +458,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->z = 1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// bottom left
@@ -379,19 +470,17 @@ skysphere_t* skysphere_create(int rows, int cols)
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 		}
 	}
 
-//FIXME neg_y face initialization crashes the PSP but not jpcsp-linux-amd64 r2570
-
-	// neg_y
-	i = 4;
+	// neg_z
+	i = 5;
 	for(r=0; r < rows; r++)
 	{
 		float dr = (((float)r)/((float)rows));
-		float dbeta = -GU_PI/4.0f + (GU_PI/2.0f) * dr;
+		float dbeta = GU_PI/4.0f - (GU_PI/2.0f) * dr;
 		float tan_dbeta = vfpu_tanf(dbeta);
 
 		for(c=0;c < cols; c++)
@@ -403,80 +492,79 @@ skysphere_t* skysphere_create(int rows, int cols)
 
 			// top left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 0]);
-			v->color = RGB(255,0,255);
+			v->color = RGB(0,0,255);
 			v->x = tan_dalpha;
-			v->y = -1.0f;
-			v->z = tan_dbeta;
+			v->y = tan_dbeta;
+			v->z = -1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*)&(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+
+			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 1]);
-			v->color = RGB(255,0,255);
+			v->color = RGB(0,0,255);
 			v->x = tan_dalpha;
-			v->y = -1.0f;
-			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
+			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
+			v->z = -1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 2]);
-			v->color = RGB(255,0,255);
+			v->color = RGB(0,0,255);
 			v->x = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
-			v->y = -1.0f;
-			v->z = tan_dbeta;
+			v->y = tan_dbeta;
+			v->z = -1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// second triangle
 			// bottom right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 3]);
-			v->color = RGB(255,0,255);
+			v->color = RGB(0,0,255);
 			v->x = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
-			v->y = -1.0f;
-			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
+			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
+			v->z = -1.0f;
 
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 4]);
-			v->color = RGB(255,0,255);
+			v->color = RGB(0,0,255);
 			v->x = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
-			v->y = -1.0f;
-			v->z = tan_dbeta;
+			v->y = tan_dbeta;
+			v->z = -1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 5]);
-			v->color = RGB(255,0,255);
+			v->color = RGB(0,0,255);
 			v->x = tan_dalpha;
-			v->y = -1.0f;
-			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
-
+			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
+			v->z = -1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = vfpu_atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
+			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
 			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
 		}
 	}
-
 	return s;
 }
 
