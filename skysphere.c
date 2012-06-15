@@ -44,10 +44,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = tan_dbeta;
 			v->z = tan_dalpha;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr;
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 1]);
@@ -56,10 +55,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = tan_dalpha;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 2]);
@@ -68,11 +66,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = tan_dbeta;
 			v->z = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
 
 			// second triangle
 			// bottom right
@@ -82,10 +78,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 4]);
@@ -95,8 +90,8 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->z = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 5]);
@@ -105,10 +100,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = tan_dalpha;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 		}
 	}
 
@@ -134,10 +128,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = tan_dbeta;
 			v->z = tan_dalpha;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr;
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 1]);
@@ -146,10 +139,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = tan_dalpha;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;			
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 2]);
@@ -158,11 +150,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = tan_dbeta;
 			v->z = vfpu_tanf(dalpha - (GU_PI/2.0f)/(float)cols);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
 
 			// second triangle
 			// bottom right
@@ -172,10 +162,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = vfpu_tanf(dalpha - (GU_PI/2.0f)/(float)cols);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 4]);
@@ -185,8 +174,8 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->z = vfpu_tanf(dalpha - (GU_PI/2.0f)/(float)cols);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 5]);
@@ -195,10 +184,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = tan_dalpha;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 		}
 	}
 
@@ -224,10 +212,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = 1.0f;
 			v->z = tan_dbeta;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr;
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 1]);
@@ -236,10 +223,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = 1.0f;
 			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 2]);
@@ -248,11 +234,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = 1.0f;
 			v->z = tan_dbeta;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
 
 			// second triangle
 			// bottom right
@@ -261,12 +245,10 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->x = vfpu_tanf(dalpha - (GU_PI/2.0f)/(float)cols);
 			v->y = 1.0f;
 			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
-
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 4]);
@@ -276,8 +258,8 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->z = tan_dbeta;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 5]);
@@ -286,10 +268,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = 1.0f;
 			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 		}
 	}
 
@@ -315,10 +296,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = -1.0f;
 			v->z = tan_dbeta;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr;
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 1]);
@@ -327,10 +307,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = -1.0f;
 			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 2]);
@@ -339,11 +318,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = -1.0f;
 			v->z = tan_dbeta;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
 
 			// second triangle
 			// bottom right
@@ -352,12 +329,10 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->x = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
 			v->y = -1.0f;
 			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
-
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 4]);
@@ -367,8 +342,8 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->z = tan_dbeta;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 5]);
@@ -377,10 +352,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = -1.0f;
 			v->z = vfpu_tanf(dbeta + (GU_PI/2.0f)/(float)rows);
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 		}
 	}
 
@@ -406,10 +380,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = tan_dbeta;
 			v->z = 1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr;
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 1]);
@@ -418,10 +391,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = 1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 2]);
@@ -430,11 +402,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = tan_dbeta;
 			v->z = 1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
 
 			// second triangle
 			// bottom right
@@ -443,12 +413,10 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->x = vfpu_tanf(dalpha - (GU_PI/2.0f)/(float)cols);
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = 1.0f;
-
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 4]);
@@ -458,8 +426,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->z = 1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
+
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 5]);
@@ -468,10 +437,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = 1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 		}
 	}
 
@@ -497,10 +465,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = tan_dbeta;
 			v->z = -1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr;
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 1]);
@@ -509,10 +476,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = -1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 2]);
@@ -521,11 +487,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = tan_dbeta;
 			v->z = -1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
 
 			// second triangle
 			// bottom right
@@ -534,12 +498,10 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->x = vfpu_tanf(dalpha + (GU_PI/2.0f)/(float)cols);
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = -1.0f;
-
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr + 1.0f/(float)rows;
 
 			// top right
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 4]);
@@ -549,8 +511,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->z = -1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc + 1.0f/(float)cols;
+			v->v = dr;
+
 
 			// bottom left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 5]);
@@ -559,10 +522,9 @@ skysphere_t* skysphere_create(int rows, int cols)
 			v->y = vfpu_tanf(dbeta - (GU_PI/2.0f)/(float)rows);
 			v->z = -1.0f;
 			vfpu_normalize_t((ScePspFVector3*)&(v->x));
-
 			vfpu_neg_t((ScePspFVector3*)&(v->nx), (ScePspFVector3*) &(v->x));
-			v->u = atan2f(v->nx, v->nz) / (2.0f * GU_PI) + 0.5f;
-			v->v = 1.0f - (vfpu_asinf(v->ny) / GU_PI + 0.5f);
+			v->u = dc;
+			v->v = dr + 1.0f/(float)rows;
 		}
 	}
 	return s;
@@ -579,6 +541,7 @@ void skysphere_draw(skysphere_t* s)
 	sceGuTexFilter(GU_LINEAR, GU_LINEAR);
 	sceGuTexWrap(GU_CLAMP, GU_CLAMP);
 
+	sceGuDepthMask(GU_TRUE);
 	for(i=0;i < 6;i++)
 	{
 		img = s->images[i];
@@ -587,6 +550,7 @@ void skysphere_draw(skysphere_t* s)
 		int cols = s->faces[i].cols;
 		sceGumDrawArray(GU_TRIANGLES, GU_TEXTURE_32BITF | GU_COLOR_8888 | GU_NORMAL_32BITF | GU_VERTEX_32BITF | GU_TRANSFORM_3D, 6 * rows * cols, 0, &(s->faces[i].vertices[0]));
 	}
+	sceGuDepthMask(GU_FALSE);
 }
 
 void skysphere_destroy(skysphere_t* s)
