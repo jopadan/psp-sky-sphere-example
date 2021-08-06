@@ -288,7 +288,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			float dalpha = -GU_PI/4.0f + (GU_PI/2.0f) * dc;
 			float tan_dalpha = vfpu_tanf(dalpha);
 			sphere_vertex_t* v;
-
+			// first triangle
 			// top left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 0]);
 			v->color = RGB(255,255,0);
@@ -372,7 +372,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			float dalpha = GU_PI/4.0f - (GU_PI/2.0f) * dc;
 			float tan_dalpha = vfpu_tanf(dalpha);
 			sphere_vertex_t* v;
-
+			// first triangle
 			// top left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 0]);
 			v->color = RGB(0,255,255);
@@ -458,6 +458,7 @@ skysphere_t* skysphere_create(int rows, int cols)
 			float tan_dalpha = vfpu_tanf(dalpha);
 			sphere_vertex_t* v;
 
+			// first triangle
 			// top left
 			v = &(s->faces[i].vertices[r * cols * 6 + c * 6 + 0]);
 			v->color = RGB(0,0,255);

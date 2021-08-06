@@ -163,11 +163,7 @@ int main(void)
 	SetupCallbacks();
 	initOSLib();
 
-
 	oslIntraFontInit(INTRAFONT_CACHE_MED);
-	OSL_FONT *font = oslLoadFontFile("flash0:/font/ltn0.pgf");
-	oslSetFont(font);
-
 	skysphere_t *sky = skysphere_create(16, 16);
 
 	gu_start();
@@ -210,7 +206,6 @@ int main(void)
 	}
 
 	skysphere_destroy(sky);
-	oslDeleteFont(font);
 	oslIntraFontShutdown();
 	oslDeinitAudio();
 	oslEndGfx();

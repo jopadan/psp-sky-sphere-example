@@ -4,6 +4,15 @@
 #include <oslib/libpspmath/pspmath.h>
 
 #define EPSILON 1e-6f
+float vfpu_fabsf(float x) {
+	float result;
+	__asm__ volatile (
+		"mtv     %1, S000\n"
+		"vmov.s  S000, S000[|x|]\n"
+		"mfv     %0, S000\n"
+	: "=r"(result) : "r"(x));
+	return result;
+}
 inline bool close_enough(float f1, float f2)
 {
 	return vfpu_fabsf((f1 - f2) / ((f2 == 0.0f) ? 1.0f : f2)) < EPSILON;

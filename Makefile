@@ -20,5 +20,5 @@ LDFLAGS =
 EXTRA_TARGETS = EBOOT.PBP
 PSP_EBOOT_TITLE = Skysphere
 #PSP_EBOOT_ICON = ICON0.PNG
-PSPSDK=$(shell psp-config --pspsdk-path)
+PSPSDK=$(PSPDEV)/psp/sdk
 include $(PSPSDK)/lib/build.mak
